@@ -9,7 +9,7 @@ inputs:
 - name: api-earthquake
 
 outputs: 
-- name: build-project-test
+- name: test-project
 
 run:
   path: sh
