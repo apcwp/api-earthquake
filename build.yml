@@ -5,10 +5,10 @@ image_resource:
   source: 
     repository: ubuntu
   
-input: 
+inputs: 
 - name: api-earthquake
 
-output: 
+outputs: 
 - name: built-project
 
 run:
@@ -16,7 +16,7 @@ run:
   args:
    - -exc
    - |
-   pwd
-   cd api-earthquake
-   ./gradlew assemble
-   cp ./build/api-earthquake-1.0-SNAPSHOT.jar ../built-project/demo.jar
+     pwd
+     cd api-earthquake
+     ./gradlew assemble
+     cp ./build/api-earthquake-1.0-SNAPSHOT.jar ../built-project/demo.jar
