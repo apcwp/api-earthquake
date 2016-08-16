@@ -1,0 +1,26 @@
+platform: linux
+      
+image_resource:
+  type: docker-image		
+  source: 
+    repository: maven
+  
+inputs: 
+- name: api-earthquake
+
+outputs: 
+- name: build-project-test
+
+run:
+  path: sh
+  args:
+   - -exc
+   - |
+     pwd
+     cd api-earthquake
+     chmod +x gradlew
+     ./gradlew test
+     cp ./build/libs/api-earthquake-1.0-SNAPSHOT.jar ../built-project/demo.jar
+params:
+  TERM: -dumb
+  GRADLE_OPTS: -Dorg.gradle.native=false	

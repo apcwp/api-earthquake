@@ -13,4 +13,13 @@ jobs:
   - task: build
     privileged: true
     file: api-earthquake/build.yml
-     
+
+jobs:
+- name: api-earthquake-test
+  serial: true	
+  plan:
+  - {get: api-earthquake, trigger: true}
+  - task: test
+    privileged: true
+    file: api-earthquake/build.yml
+	
