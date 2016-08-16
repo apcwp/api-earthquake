@@ -21,6 +21,6 @@ run:
      chmod +x gradlew
      ./gradlew assemble
      cp ./build/api-earthquake-1.0-SNAPSHOT.jar ../built-project/demo.jar
-  params:
-   TERM: -dumb
-   GRADLE_OPTS: -Dorg.gradle.native=false	
+params:
+  TERM: -dumb
+  GRADLE_OPTS: -Dorg.gradle.native=false	
