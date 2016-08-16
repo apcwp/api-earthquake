@@ -52,8 +52,8 @@ jobs:
     file: api-earthquake/build.yml
   - put: resource-deploy-web-app
     params:
-      manifest: api-earthquake/manifest1.yml
-      path: built-project/demo1.jar
+      manifest: api-earthquake/manifest.yml
+      path: built-project/demo.jar
   - put: resource-deploy-web-app-sys
     params:
       manifest: api-earthquake/manifest.yml
