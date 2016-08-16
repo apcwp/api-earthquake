@@ -20,7 +20,6 @@ run:
      cd api-earthquake
      chmod +x gradlew
      ./gradlew test
-     cp ./build/libs/api-earthquake-1.0-SNAPSHOT.jar ../built-project/demo.jar
 params:
   TERM: -dumb
   GRADLE_OPTS: -Dorg.gradle.native=false	
