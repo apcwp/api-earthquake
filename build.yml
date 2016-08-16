@@ -19,9 +19,8 @@ run:
      pwd
      cd api-earthquake
      chmod +x gradlew
-     ./gradlew assemble
-     pwd
-     cp ./build/api-earthquake-1.0-SNAPSHOT.jar ../built-project/demo.jar
+     ./gradlew assemblepwd
+     cp ./build/libs/api-earthquake-1.0-SNAPSHOT.jar ../built-project/demo.jar
 params:
   TERM: -dumb
   GRADLE_OPTS: -Dorg.gradle.native=false	
