@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.springframework.cloud:spring-cloud-starter-ribbon:1.1.2.RELEASE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../gradlerepo/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-ribbon/1.1.2.RELEASE/35cdf752aaa7b8be3402956791f45ad7ded6fce1/spring-cloud-starter-ribbon-1.1.2.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../gradlerepo/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-ribbon/1.1.2.RELEASE/8155258ee4266e5bbe15452dfd69fc16faf241db/spring-cloud-starter-ribbon-1.1.2.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

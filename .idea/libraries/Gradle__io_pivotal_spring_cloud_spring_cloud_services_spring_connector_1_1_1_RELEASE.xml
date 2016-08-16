@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.pivotal.spring.cloud:spring-cloud-services-spring-connector:1.1.1.RELEASE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../gradlerepo/caches/modules-2/files-2.1/io.pivotal.spring.cloud/spring-cloud-services-spring-connector/1.1.1.RELEASE/10b9c7eb1ecfe9686dde968e598618cb05494122/spring-cloud-services-spring-connector-1.1.1.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../gradlerepo/caches/modules-2/files-2.1/io.pivotal.spring.cloud/spring-cloud-services-spring-connector/1.1.1.RELEASE/541bf0588eac3d9b49132fb3975daf5b641a76bb/spring-cloud-services-spring-connector-1.1.1.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
