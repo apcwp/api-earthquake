@@ -1,5 +1,5 @@
 resources:
-  - name: api-earthquake-source
+  - name: api-earthquake
     type: git
     source:
       uri: https://github.com/techwizblog/api-earthquake.git
@@ -9,7 +9,7 @@ jobs:
 - name: api-earthquake-ci
   serial: true	
   plan:
-  - {get: api-earthquake-source, trigger: true}
+  - {get: api-earthquake, trigger: true}
   - task: build
     privileged: true
     file: api-earthquake/build.yml
