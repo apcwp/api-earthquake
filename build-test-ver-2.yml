@@ -19,8 +19,8 @@ run:
    - |
      ls -la
      cd built-project
-     cat > demo.txt
-     car > tag.txt	 
+     echo api-earthquake-release >> demo.txt
+     echo V1.0 >> tag.txt	 
      ls -la
      java -version
 params:
