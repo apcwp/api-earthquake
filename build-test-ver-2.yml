@@ -19,6 +19,8 @@ run:
    - |
      ls -la
      cd built-project
+     cat > demo.txt
+     car > tag.txt	 
      ls -la
      java -version
 params:
