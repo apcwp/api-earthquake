@@ -18,7 +18,7 @@ run:
    - -exc
    - |
      ls -la
-     cd built-project
+     mkdir /tmp/build/built-project
      echo api-earthquake-release >> demo.txt
      echo V1.0 >> tag.txt	 
      ls -la
