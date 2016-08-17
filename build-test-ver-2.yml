@@ -1,0 +1,18 @@
+inputs: 
+- name: built-project
+
+outputs: 
+- name: test-project
+
+run:
+  path: sh
+  args:
+   - -exc
+   - |
+     ls -la
+     cd built-project
+     ls -la
+     java -version
+params:
+  TERM: -dumb
+  GRADLE_OPTS: -Dorg.gradle.native=false	
