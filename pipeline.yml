@@ -8,16 +8,16 @@ resources:
     type: cf
     source:
       api: https://api.run.pivotal.io
-      username: shoaibali.khan@suncorp.com.au
-      password: 1984Shoaib
+      username: {{username}}
+      password: {{password}}
       organization: suncorp
       space: pws-demo
   - name: resource-deploy-web-app-sys
     type: cf
     source:
       api: https://api.run.pivotal.io
-      username: shoaibali.khan@suncorp.com.au
-      password: 1984Shoaib
+      username: {{username}}
+      password: {{password}}
       organization: suncorp
       space: pws-demo
 
