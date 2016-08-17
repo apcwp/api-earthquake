@@ -1,3 +1,5 @@
+platform: linux
+
 inputs: 
 - name: built-project
 
