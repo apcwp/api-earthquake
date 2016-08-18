@@ -4,11 +4,45 @@ resources:
     source:
       uri: https://github.com/techwizblog/api-earthquake.git
       branch: master
-  - name: release
+  - name: gh-release
     type: github-release
     source:
       user: techwizblog
-      repository: api-earthquake	  
+      repository: api-earthquake
+  - name: release
+    type: git
+    source:
+      branch: master
+      uri: https://github.com/techwizblog/api-earthquake.git
+      private_key: |
+         -----BEGIN RSA PRIVATE KEY-----
+         MIIEpAIBAAKCAQEAwz3/3HpUgNzS/TIo3N1W0mZyNVZ6yB2Eg98Ys5lal+9O3XZ7
+         HY83iTjMUtI4IieoQVcaoel6kCzclcTnTQrrfCwZ9tTKC1FO1F0TxO0jjRFOxB5Y
+         GQiEZ+EurSEsmGUTs9smYUCQINSx5s7l4bf01mgsliwbRRzU7B9bw7ayT8LIzRa2
+         z8o+c4Ey8d5EpFrtzOUCtxvl7hfv7LuK4wJRMsdiJehKlIqurSo+UsD+GkY9TEjU
+         bJZwDTUEHOybEFjBIAcB9n4aT/IvIDEh+9ngvVIQFk4I2EJES4mz07eZMBoSFF+6
+         L52iGVdmfG5W1qAoE1LP8NXdAJFJDKPEsN4zCQIDAQABAoIBAQCFF4eKQW3HZkEB
+         zqaiYNPlm2ZxS6FpNw31YyiQjZJ/DegB+dlVPiLKjQhj0N/pEIWW/QyvoNwm2h4I
+         jnBqSW5beCi+5TFR47xL8aMfU9QvPsQl1tWRQwgXVB6gcIPY4tY6fcK8+ukFKFiZ
+         kSKN6vuhCOST/j8crtnKmFnSoYEN8vThxYhhYybQVsyOXreJY25vpFsfWFLvOlkx
+         q4fYCpjz27WfRhBPf/J4AkMVmlHZnOkLslC5BOwacAbEJ2ARKi1838y08DXy+sBe
+         8Y+LlaGsFgzywjPpXVi9myMOFaFrksEL+2mWeqqTHbc+wJWu0IP9P80g3A7oMqJa
+         GyAVvXQxAoGBAPcMDU2TmZ6ohfc1OQ2pC5vd9SFxGTZs2U4OKKyHvdtcPLVXbr2T
+         bWrya7shgMOQ3GwEE0b0/Npaox+qPZMWU7OYuRH9OXMT2RQrJRQEus3Wq4kCICAG
+         PL9IcOrkbwby572zfSQQtSVg8a7o0B4v2zJy4Xt/TRLKLxMqlVyo3HJ9AoGBAMpR
+         VYrpktKfk6dMhP/ssqTWqi8akRTOpcfSKGQzc3FfHnY23XF9dbSvVL4Ww2RcyBgM
+         J2KNHoDlA0PCM7EEQiJCp3PRPiCLJ5bksXqiJuCCtGOUs+nvPpY282WU+eW9S77c
+         JALsDO5xz2YCXMAba1+df5/uKq7U64cSMBZ8CTx9AoGBAM7vWXVR3av4nb6k5lV6
+         9C5rjZmlkujz5FJtqcRbL70/VdrQkgJaK50Z0wO83I70GK6h+0PEksiUg29SuqEq
+         YpJdqyhWZHjwdzVdroFGNPOWjbkF/sLUdq4DkBIxpo67iUJtxrUfCZ11xvwsJ6gh
+         jgqEEDvSNk027pevY81p5L5BAoGAT8qqGSIrlMP44Ndt8N1yS06aSf+JTpJ9kYRS
+         B8q+8eyYv/i9d0AKxxsLKfkiUJfDFrDca6LKb/1iPzv9VQgf6REup5/Th9Q55eoG
+         ER6YhJ0n9co09sMzhNzhO6P4tuHkWL7LuRdNtlDOgiXWXLGztD8SkYnF7bPtvBSx
+         QHzky6UCgYBdjoy90LJEi998zZJY56E5fbyqi/a8NcNhjmvbET9keXpOhSzy8Gat
+         mwTC//FBWKYMQab2yvLPo8GC5JUXpo0yM3Tanb0pbIrDSsJo2KBTKcdFamGtZF54
+         UjRLOTGn9O1o7KWBrw/4kHZmbQgVEzEczi5iN/6sKYN8M7HRodENRQ==
+         -----END RSA PRIVATE KEY-----
+ 
   - name: resource-deploy-web-app
     type: cf
     source:
@@ -31,6 +65,7 @@ jobs:
   serial: true	
   plan:
   - {get: api-earthquake, trigger: true}
+  - get: release
   - task: build
     privileged: true
     file: api-earthquake/build.yml
@@ -38,9 +73,11 @@ jobs:
     privileged: true
     file: api-earthquake/build-test-ver-2.yml
   - put: release
+    params: {repository: built-project}
+  - put: gh-release
     params:
      name: /built-project/demo.txt
      tag: /built-project/tag.txt
      globs: 
       - built-project/*.jar
-      
+ 

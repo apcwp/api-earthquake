@@ -12,6 +12,7 @@ inputs:
 
 outputs: 
 - name: test-project
+- name: built-project
 
 run:
   path: sh
