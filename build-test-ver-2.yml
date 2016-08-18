@@ -8,7 +8,6 @@ image_resource:
 
 inputs: 
 - name: api-earthquake
-- name: built-project
 
 outputs: 
 - name: test-project
