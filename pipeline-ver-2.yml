@@ -39,8 +39,8 @@ jobs:
     file: api-earthquake/build-test-ver-2.yml
   - put: release
     params:
-     name: /built-project/demo.txt
-     tag: /built-project/tag.txt
+     name: built-project/demo.txt
+     tag: built-project/tag.txt
      globs: 
       - built-project/*.jar
       
