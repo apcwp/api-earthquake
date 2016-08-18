@@ -29,24 +29,23 @@ resources:
       space: pws-demo
 
 jobs:
- - name: api-earthquake-ci
-  serial: true	
-  plan:
-  - {get: api-earthquake, trigger: true}
-  - task: build
-    privileged: true
-    file: api-earthquake/build.yml
-  - task: test
-    privileged: true
-    file: api-earthquake/build-test-ver-2.yml
-
- - name: deploy
+ - name: api-earthquake-test-build
+   serial: true	
+   plan:
+    - {get: api-earthquake, trigger: true}
+    - task: test
+      file: api-earthquake/build-test-ver-2.yml
+    - task: build
+      file: api-earthquake/build.yml
+      
+ - name: deploy-dev
    serial: true
    plan:
-   - get: release
-     passed: [api-earthquake-ci]
-     trigger: true
-   - put: resource-deploy-web-app
-     params:
+    - {get: api-earthquake, trigger: true}
+    - get: release
+      passed: [api-earthquake-test-build]
+      trigger: true
+    - put: resource-deploy-web-app
+      params:
        manifest: api-earthquake/manifest.yml
        path: release/api-earthquake-1.0-SNAPSHOT.jar

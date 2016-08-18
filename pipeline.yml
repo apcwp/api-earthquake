@@ -29,8 +29,6 @@ jobs:
   - task: build
     privileged: true
     file: api-earthquake/build.yml
-
-
 - name: api-earthquake-test
   serial: true	
   plan:

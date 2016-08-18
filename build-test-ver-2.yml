@@ -9,18 +9,15 @@ image_resource:
 inputs: 
 - name: api-earthquake
 
-outputs: 
-- name: test-project
-- name: built-project
-
 run:
   path: sh
   args:
    - -exc
    - |
      pwd
-     ls -la
-     java -version
+     cd api-earthquake
+     chmod +x gradlew
+     ./gradlew test
 params:
   TERM: -dumb
   GRADLE_OPTS: -Dorg.gradle.native=false	
