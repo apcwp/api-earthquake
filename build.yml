@@ -21,11 +21,6 @@ run:
      chmod +x gradlew
      ./gradlew assemble
      cp ./build/libs/api-earthquake-1.0-SNAPSHOT.jar ../built-project/demo.jar
-     cp ./build/libs/api-earthquake-1.0-SNAPSHOT.jar ./
-     git config --global user.email "shoaib2ali@gmail.com"
-     git config --global user.name "techwizblog"
-     git add .
-     git commit -m "Bumped date"
 params:
   TERM: -dumb
   GRADLE_OPTS: -Dorg.gradle.native=false

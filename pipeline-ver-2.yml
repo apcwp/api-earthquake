@@ -6,6 +6,11 @@ resources:
       branch: master
       username: techwizblog
       password : {{git-password}}
+  - name: release
+    type: github-release
+    source:
+      user: techwizblog
+      repository: api-earthquake
   - name: resource-deploy-web-app
     type: cf
     source:
@@ -24,7 +29,7 @@ resources:
       space: pws-demo
 
 jobs:
-- name: api-earthquake-ci
+ - name: api-earthquake-ci
   serial: true	
   plan:
   - {get: api-earthquake, trigger: true}
@@ -34,5 +39,14 @@ jobs:
   - task: test
     privileged: true
     file: api-earthquake/build-test-ver-2.yml
-  - put: api-earthquake
-    params: {repository: api-earthquake}
+
+ - name: deploy
+   serial: true
+   plan:
+   - get: release
+     passed: [api-earthquake-ci]
+     trigger: true
+   - put: resource-deploy-web-app
+     params:
+       manifest: api-earthquake/manifest.yml
+       path: release/api-earthquake-1.0-SNAPSHOT.jar
