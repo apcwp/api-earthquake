@@ -7,6 +7,7 @@ image_resource:
   
 inputs: 
 - name: api-earthquake
+- name: release
 
 outputs: 
 - name: built-project
@@ -21,6 +22,7 @@ run:
      chmod +x gradlew
      ./gradlew assemble
      cp ./build/libs/api-earthquake-1.0-SNAPSHOT.jar ../built-project/demo.jar
+     cp ./build/libs/api-earthquake-1.0-SNAPSHOT.jar ../release/demo.jar
 params:
   TERM: -dumb
   GRADLE_OPTS: -Dorg.gradle.native=false	
