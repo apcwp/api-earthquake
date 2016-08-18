@@ -1,3 +1,12 @@
+groups:
+  - name: dev
+    jobs:
+     - api-earthquake-test-build
+     - api-earthquake-deploy-dev
+  - name: sys
+    jobs:
+     - api-earthquake-test-build
+     - api-earthquake-deploy-sys
 resources:
   - name: api-earthquake
     type: git
@@ -18,7 +27,7 @@ resources:
       username: {{username}}
       password: {{password}}
       organization: suncorp
-      space: pws-demo
+      space: pws-demo-dev
   - name: resource-deploy-web-app-sys
     type: cf
     source:
@@ -26,7 +35,7 @@ resources:
       username: {{username}}
       password: {{password}}
       organization: suncorp
-      space: pws-demo
+      space: pws-demo-sys
 
 jobs:
  - name: api-earthquake-test-build
@@ -39,7 +48,7 @@ jobs:
     - task: build
       file: api-earthquake/build.yml
       
- - name: deploy-dev
+ - name: api-earthquake-deploy-dev
    serial: true
    plan:
     - get: api-earthquake
@@ -48,6 +57,18 @@ jobs:
     - get: release      
       trigger: true
     - put: resource-deploy-web-app
+      params:
+       manifest: api-earthquake/manifest.yml
+       path: release/api-earthquake-1.0-SNAPSHOT.jar
+ - name: api-earthquake-deploy-sys
+   serial: true
+   plan:
+    - get: api-earthquake
+      passed: [api-earthquake-deploy-dev]
+      trigger: true
+    - get: release      
+      trigger: true
+    - put: resource-deploy-web-app-sys
       params:
        manifest: api-earthquake/manifest.yml
        path: release/api-earthquake-1.0-SNAPSHOT.jar
