@@ -20,11 +20,6 @@ run:
    - |
      pwd
      ls -la
-     mkdir /tmp/build/built-project
-     cd /tmp/build/built-project
-     echo api-earthquake-release >> demo.txt
-     echo V1.0 >> tag.txt	 
-     ls -la
      java -version
 params:
   TERM: -dumb
