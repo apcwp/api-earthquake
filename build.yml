@@ -22,6 +22,8 @@ run:
      ./gradlew assemble
      cp ./build/libs/api-earthquake-1.0-SNAPSHOT.jar ../built-project/demo.jar
      cp ./build/libs/api-earthquake-1.0-SNAPSHOT.jar ./
+     git add .
+     git commit -m "Bumped date"
 params:
   TERM: -dumb
-  GRADLE_OPTS: -Dorg.gradle.native=false	
+  GRADLE_OPTS: -Dorg.gradle.native=false
