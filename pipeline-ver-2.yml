@@ -47,6 +47,11 @@ jobs:
       file: api-earthquake/build-test-ver-2.yml
     - task: build
       file: api-earthquake/build.yml
+    - put: release
+      name: api-earthquake/release.txt
+      tag: api-earthquake/tag.txt
+      globs:
+        - built-project/demo.jar	  
       
  - name: api-earthquake-deploy-dev
    serial: true
