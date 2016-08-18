@@ -6,6 +6,7 @@ groups:
   - name: sys
     jobs:
      - api-earthquake-test-build
+     - api-earthquake-deploy-dev
      - api-earthquake-deploy-sys
 resources:
   - name: api-earthquake
@@ -20,6 +21,7 @@ resources:
     source:
       user: techwizblog
       repository: api-earthquake
+      access_token: {{git-accesstoken}}
   - name: resource-deploy-web-app
     type: cf
     source:
@@ -42,22 +44,20 @@ jobs:
    serial: true	
    plan:
     - {get: api-earthquake, trigger: true}
-    - get: release
     - task: test
-      file: api-earthquake/build-test-ver-2.yml
+      file: api-earthquake/build-test-ver-2.yml    
     - task: build
       file: api-earthquake/build.yml
     - put: release
-      name: api-earthquake/release.txt
-      tag: api-earthquake/tag.txt
-      globs:
-        - built-project/demo.jar	  
-      
+      params: 
+        name: api-earthquake/release.txt
+        tag: api-earthquake/tag.txt
+        globs:
+         - built-project/demo.jar
  - name: api-earthquake-deploy-dev
    serial: true
    plan:
     - get: api-earthquake
-      passed: [api-earthquake-test-build]
       trigger: true
     - get: release      
       trigger: true
