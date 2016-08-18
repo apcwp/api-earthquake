@@ -53,7 +53,7 @@ jobs:
         name: api-earthquake/release.txt
         tag: api-earthquake/tag.txt
         globs:
-         - built-project/demo.jar
+         - built-project/api-earthquake-1.0-SNAPSHOT.jar
  - name: api-earthquake-deploy-dev
    serial: true
    plan:

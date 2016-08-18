@@ -11,6 +11,7 @@ inputs:
 
 outputs: 
 - name: built-project
+- name: release
 
 run:
   path: sh
@@ -21,7 +22,7 @@ run:
      cd api-earthquake
      chmod +x gradlew
      ./gradlew assemble
-     cp ./build/libs/api-earthquake-1.0-SNAPSHOT.jar ../built-project/demo.jar
+     cp ./build/libs/api-earthquake-1.0-SNAPSHOT.jar ../built-project/api-earthquake-1.0-SNAPSHOT.jar
 params:
   TERM: -dumb
   GRADLE_OPTS: -Dorg.gradle.native=false
