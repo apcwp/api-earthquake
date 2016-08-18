@@ -18,6 +18,7 @@ run:
   args:
    - -exc
    - |
+     pwd
      ls -la
      mkdir /tmp/build/built-project
      cd /tmp/build/built-project
