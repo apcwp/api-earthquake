@@ -1,5 +1,5 @@
 applications:
-- name: api-earthquake
+- name: api-earthquake-sys
   memory: 512M
   instances: 1
   host: api-earthquake
