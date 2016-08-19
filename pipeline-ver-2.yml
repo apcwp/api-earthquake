@@ -59,9 +59,9 @@ jobs:
    plan:    
     - get: api-earthquake      
       trigger: true
+      passed: [api-earthquake-test-build]
     - get: release      
       trigger: true
-      passed: [api-earthquake-test-build]
     - put: resource-deploy-web-app
       params:
        manifest: api-earthquake/manifest.yml
