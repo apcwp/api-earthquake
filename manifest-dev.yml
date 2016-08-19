@@ -1,7 +1,7 @@
 applications:
-- name: api-earthquake-dev
+- name: api-earthquake
   memory: 512M
   instances: 1
-  host: api-earthquake
+  host: api-earthquake-{{ENV}}
   path: ./build/libs/api-earthquake-1.0-SNAPSHOT.jar
   services: [registry]

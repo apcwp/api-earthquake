@@ -66,6 +66,7 @@ jobs:
       params:
        manifest: api-earthquake/manifest-dev.yml
        path: release/api-earthquake-1.0-SNAPSHOT.jar
+       ENV: dev
  - name: api-earthquake-deploy-sys
    serial: true
    plan:
@@ -78,3 +79,4 @@ jobs:
       params:
        manifest: api-earthquake/manifest-sys.yml
        path: release/api-earthquake-1.0-SNAPSHOT.jar
+       ENV: dev
