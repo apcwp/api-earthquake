@@ -12,14 +12,14 @@ resources:
   - name: api-earthquake
     type: git
     source:
-      uri: https://github.com/techwizblog/api-earthquake.git
+      uri: https://github.com/apcwp/api-earthquake.git
       branch: master
-      username: techwizblog
+      username: apcwp
       password : {{git-password}}
   - name: release
     type: github-release
     source:
-      user: techwizblog
+      user: apcwp
       repository: api-earthquake
       access_token: {{git-accesstoken}}
   - name: resource-deploy-web-app
@@ -28,16 +28,16 @@ resources:
       api: https://api.run.pivotal.io
       username: {{username}}
       password: {{password}}
-      organization: suncorp
-      space: pws-demo-dev
+      organization: Suncorp
+      space: pws-demo-john-dev
   - name: resource-deploy-web-app-sys
     type: cf
     source:
       api: https://api.run.pivotal.io
       username: {{username}}
       password: {{password}}
-      organization: suncorp
-      space: pws-demo-sys
+      organization: Suncorp
+      space: pws-demo-john-sys
 
 jobs:
  - name: api-earthquake-test-build
